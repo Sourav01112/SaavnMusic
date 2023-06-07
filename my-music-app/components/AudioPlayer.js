@@ -4,6 +4,7 @@ import { useUserContext } from "../context/userContext";
 import { BsPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import Head from "next/head";
+import NextImage from "next/image";
 const AudioPlayer = () => {
   const {
     audioSrc,
@@ -23,24 +24,44 @@ const AudioPlayer = () => {
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const { duration } = audioRef.current;
-  console.log(duration);
+  // console.log(duration);
+
   //useEffect
+  // useEffect(() => {
+  //   audioRef.current.play();
+  //   setIsPlaying(true);
+  //   setInterval(() => {
+  //     setTrackProgress(audioRef.current.currentTime);
+  //   }, 500);
+  //   return () => {
+  //     audioRef.current.pause();
+  //     setIsPlaying(false);
+  //   };
+  // }, [audioSrc]);
+
   useEffect(() => {
-    audioRef.current.play();
+    const audio = audioRef.current; // Creating a local variable
+
+    audio.play();
     setIsPlaying(true);
-    setInterval(() => {
-      setTrackProgress(audioRef.current.currentTime);
+
+    const interval = setInterval(() => {
+      setTrackProgress(audio.currentTime);
     }, 500);
+
     return () => {
-      audioRef.current.pause();
+      audio.pause();
       setIsPlaying(false);
+      clearInterval(interval);
     };
   }, [audioSrc]);
+
   const onScrub = (value) => {
     // Clear any timers already running
     audioRef.current.currentTime = value;
     setTrackProgress(audioRef.current.currentTime);
   };
+
   const currentPercentage = duration
     ? `${(trackProgress / duration) * 100}%`
     : "0%";

@@ -7,6 +7,8 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import { CgHeart } from "react-icons/cg";
 import Data from "../data.json";
 import { useUserContext } from "../context/userContext";
+import Image from "next/image";
+
 const BottomPlayer = () => {
   const {
     audioSrc,
@@ -25,26 +27,36 @@ const BottomPlayer = () => {
 
   const RandomNumber = Math.floor(Math.random() * 10);
   const { songNum, setSongNum } = useUserContext();
-  console.log(songNum);
+  // console.log(songNum);
 
   const [trackProgress, setTrackProgress] = useState(0);
 
   const [play, setPlay] = useState(false);
   const [currentSong, setCurrentSong] = useState(Data[songNum]);
 
+  // useEffect(() => {
+  //   setCurrentSong(Data[songNum]);
+  //   // setInterval(() => {
+  //   //   setTrackProgress(audioRef.current.currentTime);
+  //   // }, 500);
+  //   audioRef.current.play();
+  //   setPlay(true);
+  // }, [currentSong, songNum]);
+  
+  const audioRef = useRef(null);
+
   useEffect(() => {
     setCurrentSong(Data[songNum]);
-    // setInterval(() => {
-    //   setTrackProgress(audioRef.current.currentTime);
-    // }, 500);
-    audioRef.current.play();
-    setPlay(true);
+    if (audioRef.current) {
+      audioRef.current.play();
+      setPlay(true);
+    }
   }, [currentSong, songNum]);
+
   useEffect(() => {
     audioRef.current.pause();
     setPlay(false);
-  }, []);
-  const audioRef = useRef(null);
+  }, [audioRef.current]);
 
   const handlePlay = () => {
     if (play) {
@@ -89,23 +101,47 @@ const BottomPlayer = () => {
     setPage("playingnow");
   };
 
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setTrackProgress(audioRef.current.currentTime);
+  //   }, 10);
+  // }, []);
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTrackProgress(audioRef.current.currentTime);
+  //   }, 10);
+
+  //   // return () => {
+  //   //   clearInterval(interval);
+  //   // };
+  // }, []);
+
   useEffect(() => {
-    setInterval(() => {
-      setTrackProgress(audioRef.current.currentTime);
-    }, 10);
-  }, [audioRef.current]);
+    if (audioRef.current) {
+      const interval = setInterval(() => {
+        setTrackProgress(audioRef.current.currentTime);
+      }, 10);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [audioRef]);
 
   return (
     <div className="  z-50 drop-shadow-lg bg-base-200  fixed bottom-0 right-0 left-0 sm:left-60 backdrop-blur-md  h-[70px] sm:h-20 p-2 flex items-center justify-between px-5  lg:px-10 space-x-10 ">
-    {/* // <div className="  z-50 drop-shadow-lg bg-yellow-200  fixed bottom-0 right-0 left-0 sm:left-60 backdrop-blur-md  h-[70px] sm:h-20 p-2 flex items-center justify-between px-5  lg:px-10 space-x-10 "> */}
+      {/* // <div className="  z-50 drop-shadow-lg bg-yellow-200  fixed bottom-0 right-0 left-0 sm:left-60 backdrop-blur-md  h-[70px] sm:h-20 p-2 flex items-center justify-between px-5  lg:px-10 space-x-10 "> */}
       <div
         onClick={handleClick}
         className=" cursor-pointer hover:bg-base-300 p-1 rounded-lg w-80 items-center flex space-x-2"
       >
-        <img
+        <Image
           className=" rounded-xl shadow-md h-10 sm:h-14"
           src={currentSong.imgSrc}
           alt=""
+          width={50}
+          height={50}
         />
         <div>
           <p className=" line-clamp-1 font-semibold sm:text-xl">

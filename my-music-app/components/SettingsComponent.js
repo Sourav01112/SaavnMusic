@@ -57,6 +57,7 @@ const SettingsComponent = () => {
             <a
               href="https://github.com/Sourav01112"
               target="_blank"
+              rel="noreferrer"
               style={{ backgroundColor: "yellow" }}
             >
               My GitHub

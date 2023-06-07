@@ -1,5 +1,6 @@
 import React from "react";
 import { useUserContext } from "../context/userContext";
+import NextImage from "next/image";
 
 const SearchCard = ({ data }) => {
   const {
@@ -27,10 +28,11 @@ const SearchCard = ({ data }) => {
   return (
     <div>
       <div data-aos="zoom-in" onClick={handleClick}>
-        <img
+        <NextImage
           className=" hover:shadow-2xl transition-all hover:scale-105 shadow-xl w-[150px] md:w-36 active:scale-95 cursor-pointer rounded-xl sm:w-40"
           src={data.image[1].link}
           alt=""
+          
         />
         <h1 className=" line-clamp-1 w-36   drop-shadow-xl font-semibold">
           {data.name}

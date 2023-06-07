@@ -34,6 +34,7 @@ export default function Home() {
         <meta
           property="og:url"
           //  content= write here the deployed link
+          
         />
         <meta
           property="og:title"

@@ -128,7 +128,7 @@ const Navbar = () => {
         <ul
           className={` ${
             isMenu ? " left-0" : " sm:left-0 -left-[400px]"
-            }  transition-all fixed sm:block rounded-r-sm h-screen menu bg-base-200 w-60 p-3`}
+          }  transition-all fixed sm:block rounded-r-sm h-screen menu bg-base-200 w-60 p-3`}
           // }  transition-all fixed sm:block rounded-r-sm h-screen menu bg-sky-400 w-60 p-3`}
         >
           <div>
@@ -232,7 +232,8 @@ const Navbar = () => {
           <p className="py-4">
             This is online web music player made with ReactJs, NextJs and
             TailwindCSS for Searching music I'm using{" "}
-            <span className=" text-info underline">saavn.me</span> API
+            <span className=" text-info underline">saavn.me&apos;s</span>
+            API
           </p>
           <div className="dropdown dropdown-right dropdown-end">
             <label tabIndex="0" className="btn m-1">

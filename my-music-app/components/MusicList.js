@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import { useUserContext } from "../context/userContext";
+import NextImage from "next/image";
 
 const MusicList = ({ data }) => {
   const { setSongNum } = useUserContext();
@@ -32,11 +33,14 @@ const MusicList = ({ data }) => {
       className=" hover:bg-base-200 transition-all font-semibold flex items-center cursor-pointer rounded-xl w-full h-16 md:px-5   my-2"
     >
       <div className=" hidden md:block">{data.id}</div>
-      <div className=" flex items-center space-x-7">
-        <img
+      <div className=" flex items-center space-x-7"  style={{ paddingLeft: "20px" }}>
+        <NextImage
           className=" w-12 rounded-xl ml-2 md:ml-12"
+         
           src={data.imgSrc}
           alt=""
+          width={50}
+          height={50}
         />
         <div>
           <div className=" w-40">{data.title}</div>

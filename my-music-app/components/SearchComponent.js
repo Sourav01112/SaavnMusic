@@ -5,15 +5,20 @@ import { useState } from "react";
 import axios from "axios";
 import SearchTrend from "./SearchTrend";
 import SearchResults from "./SearchResults";
+import { toast } from "react-toastify";
+
 const SearchComponent = () => {
   const { page, setPage, isMenu } = useUserContext();
   const [text, setText] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (text == "") {
-      alert("Please enter a search term");
+      // alert("Please enter a search term");
+      toast.error("Please enter a valid search term");
     } else {
       setLoading(true);
       axios
@@ -22,6 +27,7 @@ const SearchComponent = () => {
         .finally(() => setLoading(false));
     }
   };
+  console.log(data);
   return (
     <div>
       <div
