@@ -5,6 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import { useUserContext } from "../context/userContext";
 import Navbar from "../components/Navbar";
+// import COMPONENT from "../components/COMPONENT";
 // ..
 export default function Home() {
   const { page, isMenu } = useUserContext();
@@ -48,6 +49,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      {/* <COMPONENT /> */}
+      {/* {page !== "playingnow" && <BottomPlayer />} */}
     </div>
   );
 }

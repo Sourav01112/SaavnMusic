@@ -17,12 +17,14 @@ const Navbar = () => {
   const [alert, setAlert] = useState(false);
   const { isMenu, setMenu, page, setPage, songNum, setSongNum } =
     useUserContext();
+
   useEffect(() => {
     setAlert(true);
     setTimeout(() => {
       setAlert(false);
     }, 3000);
   }, [songNum]);
+
   const router = useRouter();
   return (
     <>
