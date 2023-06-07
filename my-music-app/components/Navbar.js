@@ -128,8 +128,8 @@ const Navbar = () => {
         <ul
           className={` ${
             isMenu ? " left-0" : " sm:left-0 -left-[400px]"
-            // }  transition-all fixed sm:block rounded-r-sm h-screen menu bg-base-200 w-60 p-3`}
-          }  transition-all fixed sm:block rounded-r-sm h-screen menu bg-yellow-300 w-60 p-3`}
+            }  transition-all fixed sm:block rounded-r-sm h-screen menu bg-base-200 w-60 p-3`}
+          // }  transition-all fixed sm:block rounded-r-sm h-screen menu bg-sky-400 w-60 p-3`}
         >
           <div>
             <BsBoxArrowLeft

@@ -116,9 +116,9 @@
   },
   {
     "id": 15,
-    "title": "Stay  ",
+    "title": "Stay",
     "artist": "ZEDD",
-    "time": 110.915918,
+    "time": 169.204,
     "src": "/music/ZEDD - Stay.mp3",
     "imgSrc": "/images/stay.jpg"
   },
@@ -150,7 +150,7 @@
     "id": 19,
     "title": "The Morning  ",
     "artist": "The Weeknd",
-    "time": 110.915918,
+    "time": 230.19102,
     "src": "/music/The_Morning.mp3",
     "imgSrc": "/images/morning.jpg"
   },

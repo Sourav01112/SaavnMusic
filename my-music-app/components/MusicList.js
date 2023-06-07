@@ -17,7 +17,7 @@ const MusicList = ({ data }) => {
 
     var hDisplay =
       h !== 0
-        ? h + (h == 1 ? " hour, " : " hours") + (m != 0 || s > 0 ? ", " : "")
+        ? h + (h == 1 ? " hour " : " hours") + (m != 0 || s > 0 ? "" : "")
         : "";
     var mDisplay =
       m !== 0 ? m + (m == 1 ? " , " : " ") + (s != 0 ? " : " : "") : "";
