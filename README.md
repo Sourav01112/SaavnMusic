@@ -1,2 +1,2 @@
 # MusicApp
-Inspired by JioSaavn
+Inspired from JioSaavn
